@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,21 +8,79 @@
     <title>Document</title>
     <link rel="stylesheet" href="css/index.css">
 </head>
+
 <body>
     <div class="wrap">
-          <header>
-              <!-- 头部 -->
-          </header>
-          <section>
-              <!-- 主题内容 -->
-          </section>
+        <header>
+            <!-- 头部 -->
+        </header>
+        <section>
+            <!-- 主题内容 -->
+            <div class="aside">
+                <ul>
+                    <li>正在流行</li>
+                    <li>女装</li>
+                    <li>男装</li>
+                    <li>童装</li>
+                    <li>套装</li>
+                    <li>裙裤</li>
+                    <li>裤子</li>
+                    <li>卫衣</li>
+                    <li>运动</li>
+                    <li>美妆</li>
+                </ul>
+            </div>
+            <div class="cont">
+                <dl>
+                    <dt><img src="images/001.jpg" alt=""></dt>
+                    <dd>裙子</dd>
+                </dl>
+                <dl>
+                    <dt><img src="images/100.jpg" alt=""></dt>
+                    <dd>鞋</dd>
+                </dl>
+                <dl>
+                    <dt><img src="images/3748.jpg" alt=""></dt>
+                    <dd>童装</dd>
+                </dl>
+                <dl>
+                    <dt><img src="images/9484.jpg" alt=""></dt>
+                    <dd>男装</dd>
+                </dl>
+                <dl>
+                    <dt><img src="images/9479.jpg" alt=""></dt>
+                    <dd>女装</dd>
+                </dl>
+            </div>
+        </section>
 
 
 
 
     </div>
-     <script src="./js/libs/flexible.js"></script>
-     <script src="./js/libs/jquery.js"></script>
-     <script src="./js/libs/better-scroll.js"></script>
+    <script src="./js/libs/flexible.js"></script>
+    <script src="./js/libs/jquery.js"></script>
+    <script src="./js/libs/better-scroll.js"></script>
+    <script>
+        $('.aside>ul').on('click', 'li', function() {
+            $(this).addClass('active').siblings().removeClass('active');
+            var title = $(this).html();
+
+            $.ajax({
+                url: './mock/data.json',
+                dataType: 'json',
+                success: function(data) {
+                    var data = JSON.stringify(data);
+                    var recod = JSON.parse(data);
+
+                    // if (title === '女装') {
+                    //     console.log(recod)
+                    // }
+                }
+            })
+
+        })
+    </script>
 </body>
+
 </html>

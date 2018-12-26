@@ -1,7 +1,61 @@
 @import "common.scss";
 @import "mixin.scss";
-.wrap{
-    width:100%;
-    height:100%;
-    
+.wrap {
+    width: 100%;
+    height: 100%;
+    @include box_flex;
+    @include direction(column);
+    overflow: hidden;
+}
+
+section {
+    width: 100%;
+    height: 100%;
+    @include box_flex;
+    @include direction;
+    .aside {
+        width: 20%;
+        height: 100%;
+        background: #ccc;
+        @include box_flex;
+        @include direction(column);
+        ul {
+            width: 100%;
+            height: 100%;
+            @include box_flex;
+            @include direction(column);
+            @include align(center);
+            li {
+                width: 100%;
+                height: pxTorem(50px);
+                @include box_flex;
+                @include align(center);
+                @include justify(center);
+            }
+        }
+    }
+    .cont {
+        flex: 1;
+        height: 100%;
+        background: #eee;
+        @include box_flex;
+        @include flexWrap(wrap);
+        dl {
+            width: 50%;
+            @include box_flex;
+            @include direction(column);
+            @include align(center);
+            margin-top: 5px;
+            dt {
+                width: 80px;
+                img {
+                    width: 100%;
+                }
+            }
+        }
+    }
+}
+
+.active {
+    background: #fff;
 }
