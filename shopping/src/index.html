@@ -66,18 +66,7 @@
             $(this).addClass('active').siblings().removeClass('active');
             var title = $(this).html();
 
-            $.ajax({
-                url: './mock/data.json',
-                dataType: 'json',
-                success: function(data) {
-                    var data = JSON.stringify(data);
-                    var recod = JSON.parse(data);
 
-                    // if (title === '女装') {
-                    //     console.log(recod)
-                    // }
-                }
-            })
 
         })
     </script>
