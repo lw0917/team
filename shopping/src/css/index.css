@@ -191,8 +191,8 @@ section {
       background: #ccc; }
       section .left ul li {
         width: 100%;
-        height: 1.33333rem;
-        line-height: 1.33333rem;
+        height: 2.66667rem;
+        line-height: 2.66667rem;
         text-align: center; }
         section .left ul li.active {
           background: #fff;
@@ -212,7 +212,7 @@ section {
       text-align: center; }
       section .right .right-con dl {
         width: 40%;
-        height: 1.6rem;
+        height: 2.66667rem;
         margin: 0.26667rem; }
         section .right .right-con dl img {
           width: 0.8rem;

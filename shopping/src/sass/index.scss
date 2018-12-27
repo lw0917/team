@@ -16,8 +16,13 @@ section{
             background:#ccc;
             li{
                 width:100%;
+
                 height:pxTorem(50px);
                 line-height:pxTorem(50px);
+
+                height:pxTorem(100px);
+                line-height:pxTorem(100px);
+
                 text-align:center;
                 &.active{
                     background:#fff;
@@ -38,7 +43,11 @@ section{
             text-align:center;
             dl{
                 width:40%;
+
                 height:pxTorem(60px);
+
+                height:pxTorem(100px);
+
                 margin:pxTorem(10px);
                 img{
                     width:pxTorem(30px);
