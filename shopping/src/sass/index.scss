@@ -3,5 +3,49 @@
 .wrap{
     width:100%;
     height:100%;
-    
+    @include box_flex;
+    @include direction(column);
 }
+section{
+    flex:1;
+    @include box_flex;
+    .left{
+        width:pxTorem(100px);
+        overflow: hidden;
+        ul{
+            background:#ccc;
+            li{
+                width:100%;
+                height:pxTorem(50px);
+                line-height:pxTorem(50px);
+                text-align:center;
+                &.active{
+                    background:#fff;
+                    border-left:pxTorem(3px) solid salmon;
+                    color:salmon;
+                }
+            }
+        }
+    
+    }
+    .right{
+        flex:1;
+        overflow: hidden;
+        .right-con{
+            @include box_flex;
+            flex-wrap:wrap;
+            @include align;
+            text-align:center;
+            dl{
+                width:40%;
+                height:pxTorem(60px);
+                margin:pxTorem(10px);
+                img{
+                    width:pxTorem(30px);
+                    height:pxTorem(30px);
+                }
+            }
+        }
+    }
+}
+
