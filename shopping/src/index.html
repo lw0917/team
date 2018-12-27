@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,60 +8,49 @@
     <title>Document</title>
     <link rel="stylesheet" href="css/index.css">
 </head>
+
 <body>
     <div class="wrap">
-          <header>
-              <!-- 头部 -->
-          </header>
-          <section>
-              <!-- 主题内容 -->
-              <div class="left">
-                    <ul>
-
-                       
-
-                       <!-- 列表 -->
-
-                    </ul>
-              </div>
-              <div class="right">
-                  <div class="right-con">
-
-                      
-             <dl>
-                          <dt>
+        <header>
+            <!-- 头部 -->
+        </header>
+        <section>
+            <!-- 主题内容 -->
+            <div class="left">
+                <ul>
+                    <!-- 列表 -->
+                </ul>
+            </div>
+            <div class="right">
+                <div class="right-con">
+                    <dl>
+                        <dt>
                               <img src="images/001.jpg" alt="">
                           </dt>
-                          <dd>我的</dd>
-                      </dl>
-                      <dl>
-                          <dt>
+                        <dd>我的</dd>
+                    </dl>
+                    <dl>
+                        <dt>
                               <img src="images/001.jpg" alt="">
                           </dt>
-                          <dd>我的</dd>
-                      </dl>
-                      <dl>
-                          <dt>
+                        <dd>我的</dd>
+                    </dl>
+                    <dl>
+                        <dt>
                               <img src="images/001.jpg" alt="">
                           </dt>
-                          <dd>我的</dd>
-                      </dl>
-                      <dl>
-                          <dt>
+                        <dd>我的</dd>
+                    </dl>
+                    <dl>
+                        <dt>
                               <img src="images/001.jpg" alt="">
                           </dt>
-                          <dd>我的</dd>
-                      </dl>
-                      <dl>
-                          <dt>
+                        <dd>我的</dd>
+                    </dl>
+                    <dl>
+                        <dt>
                               <img src="images/001.jpg" alt="">
                           </dt>
-                          <dd>我的</dd>
-                      </dl>
-                      <dl>
-                        <dt>
-                            <img src="images/001.jpg" alt="">
-                        </dt>
                         <dd>我的</dd>
                     </dl>
                     <dl>
@@ -213,18 +203,25 @@
                         </dt>
                         <dd>我的</dd>
                     </dl>
-                     <dl>
-                          <dt>
+                    <dl>
+                        <dt>
+                            <img src="images/001.jpg" alt="">
+                        </dt>
+                        <dd>我的</dd>
+                    </dl>
+                    <dl>
+                        <dt>
                               <img src="images/001.jpg" alt="">
                           </dt>
-                          <dd>我的</dd>
-                      </dl>
-                      <dl>
-                          <dt>
+                        <dd>我的</dd>
+                    </dl>
+                    <dl>
+                        <dt>
                               <img src="images/001.jpg" alt="">
                           </dt>
-                          <dd>我的</dd>
-                      </dl> <dl>
+                        <dd>我的</dd>
+                    </dl>
+                    <dl>
                         <dt>
                             <img src="images/001.jpg" alt="">
                         </dt>
@@ -249,77 +246,73 @@
                         <dd>我的</dd>
                     </dl>
 
-                  </div>
-              </div>
-          </section>
-
-
-
-
+                </div>
+            </div>
+        </section>
     </div>
-     <script src="./js/libs/flexible.js"></script>
-     <script src="./js/libs/jquery.js"></script>
-     <script src="./js/libs/better-scroll.js"></script>
-     <script>
+    <script src="./js/libs/flexible.js"></script>
+    <script src="./js/libs/jquery.js"></script>
+    <script src="./js/libs/better-scroll.js"></script>
+    <script>
+        var ind = null;
 
+        init();
 
-               var ind=null;
+        function init() {
+            //渲染左边列表
+            renderList()
+        }
 
-              init();
-             function init(){
-                  //渲染左边列表
-                  renderList()
-             }
+        function renderList() {
+            $.ajax({
+                url: './mock/data.json',
+                dataType: 'json',
+                success: function(res) {
+                    renderLeft(res)
 
-             function renderList(){
-                  $.ajax({
-                      url:'./mock/data.json',
-                      dataType:'json',
-                      success:function(res){
-                        renderLeft(res)
-                         
-                      }
-                  })
-             }
-                function renderLeft(data){ 
-                    var str='';
-                      for(var key in data){
-                          str+=` <li>${key}</li>`
-                      }
-                      $('ul').html(str);
-                     $('ul li').eq(0).addClass('active').siblings().removeClass('active'); 
-                  var scroll=new BScroll('.left',{
-                         probeType:2,
-                         click:true
-                      }) 
-                      addEvent(data)
                 }
-               
-             function addEvent(data){
-                    renderRight(data[$('.active').html()])
-                    $('ul').on('click','li',function(){
-                          $(this).addClass('active').siblings().removeClass('active');
-                          renderRight(data[$(this).html()]) 
-                    })
-                }
-                function renderRight(data){
-                    var str='';
-                    data.map(function(file){
-                        str+=` <dl>
+            })
+        }
+
+        function renderLeft(data) {
+            var str = '';
+            for (var key in data) {
+                str += ` <li>${key}</li>`
+            }
+            $('ul').html(str);
+            $('ul li').eq(0).addClass('active').siblings().removeClass('active');
+            var scroll = new BScroll('.left', {
+                probeType: 2,
+                click: true
+            })
+            addEvent(data)
+        }
+
+        function addEvent(data) {
+            renderRight(data[$('.active').html()])
+            $('ul').on('click', 'li', function() {
+                $(this).addClass('active').siblings().removeClass('active');
+                renderRight(data[$(this).html()])
+            })
+        }
+
+        function renderRight(data) {
+            var str = '';
+            data.map(function(file) {
+                str += ` <dl>
                         <dt>
                             <img src="${file.url}" alt="">
                         </dt>
                         <dd>${file.title}</dd>
                     </dl>`
-                    })
-                    $('.right-con').html(str);
-                      var bscroll=new BScroll('.right',{
-                           probeType:2,
-                           click:true
-                       })
-                }
-          
-
-     </script>
+            })
+            $('.right-con').html(str);
+            var bscroll = new BScroll('.right', {
+                probeType: 2,
+                click: true
+            })
+        }
+    </script>
 </body>
+
 </html>
